@@ -1,16 +1,27 @@
-<script setup lang="ts">
+<script lang="ts">
+import { defineComponent } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 
-const router = useRouter()
-const route = useRoute()
+export default defineComponent({
+  name: 'Header',
+  setup() {
+    const router = useRouter()
+    const route = useRoute()
 
-const navigateTo = (path: string) => {
-  router.push(path)
-}
+    const navigateTo = (path: string) => {
+      router.push(path)
+    }
 
-const isActive = (path: string) => {
-  return route.path === path
-}
+    const isActive = (path: string) => {
+      return route.path === path
+    }
+
+    return {
+      navigateTo,
+      isActive
+    }
+  }
+})
 </script>
 
 <template>

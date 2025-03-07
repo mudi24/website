@@ -7,20 +7,20 @@ const skills = ref([
   { name: '开发工具', items: ['Git', 'VS Code', 'Trae', 'Cursor'] },
 ])
 
-const experiences = ref([
-  {
-    title: '高级前端开发工程师',
-    company: 'ABC科技有限公司',
-    period: '2022 - 至今',
-    description: '负责公司核心产品的前端架构设计和开发，推动前端工程化建设'
-  },
-  {
-    title: '全栈开发工程师',
-    company: 'XYZ创新科技',
-    period: '2020 - 2022',
-    description: '参与多个全栈项目的开发，负责前后端功能实现和性能优化'
-  }
-])
+// const experiences = ref([
+//   {
+//     title: '高级前端开发工程师',
+//     company: 'ABC科技有限公司',
+//     period: '2022 - 至今',
+//     description: '负责公司核心产品的前端架构设计和开发，推动前端工程化建设'
+//   },
+//   {
+//     title: '全栈开发工程师',
+//     company: 'XYZ创新科技',
+//     period: '2020 - 2022',
+//     description: '参与多个全栈项目的开发，负责前后端功能实现和性能优化'
+//   }
+// ])
 </script>
 
 <template>

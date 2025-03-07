@@ -60,7 +60,7 @@ onMounted(async () => {
             </div>
           </div>
           <h1 class="text-3xl font-bold text-gray-900 mb-6">{{ post.title }}</h1>
-          <div class="prose prose-lg max-w-none" v-html="post.content.replace(/\n\n/g, '<br><br>').replace(/\`\`\`([\s\S]*?)\`\`\`/g, (match, code) => '<pre class=\'bg-gray-100 p-4 rounded-lg overflow-x-auto\'><code>' + code + '</code></pre>')">
+          <div class="prose prose-lg max-w-none" v-html="post.content.replace(/\n\n/g, '<br><br>').replace(/\`\`\`([\s\S]*?)\`\`\`/g, (_, code) => '<pre class=\'bg-gray-100 p-4 rounded-lg overflow-x-auto\'><code>' + code + '</code></pre>')">
           </div>
         </div>
       </article>
