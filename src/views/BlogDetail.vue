@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { posts } from '../content/blogData'
+import MarkdownIt from 'markdown-it'
 
 const route = useRoute()
 const title = route.params.title as string
@@ -13,6 +15,12 @@ interface Post {
   category: string
 }
 
+const md = new MarkdownIt({
+  html: true,
+  linkify: true,
+  typographer: true
+})
+
 const post = ref<Post>({
   title: '文章未找到',
   content: '抱歉，您请求的文章不存在。',
@@ -23,22 +31,23 @@ const post = ref<Post>({
 
 onMounted(async () => {
   try {
+    // 从blogData中获取文章元数据
+    const postMeta = posts.find(p => p.title === title)
+    if (!postMeta) {
+      console.error('Blog post not found:', title)
+      return
+    }
+
+    // 加载markdown文件内容
     const response = await fetch(`/src/content/blogs/${encodeURIComponent(title)}.md`)
     if (response.ok) {
       const text = await response.text()
-      const [frontMatter, ...contentParts] = text.split('---\n').filter(Boolean)
-      const metadata = frontMatter.split('\n').reduce((acc, line) => {
-        const [key, value] = line.split(': ').map(s => s.trim())
-        if (key && value) acc[key] = value
-        return acc
-      }, {} as Record<string, string>)
+      const [_, ...contentParts] = text.split('---\n').filter(Boolean)
 
+      const rawContent = contentParts.join('---\n')
       post.value = {
-        title: metadata.title || title,
-        content: contentParts.join('---\n'),
-        date: metadata.date || '',
-        readTime: metadata.readTime || '',
-        category: metadata.category || ''
+        ...postMeta,
+        content: md.render(rawContent)
       }
     }
   } catch (error) {
@@ -53,14 +62,14 @@ onMounted(async () => {
       <article class="bg-white shadow-lg rounded-lg overflow-hidden">
         <div class="p-8">
           <div class="flex items-center justify-between mb-6">
-            <span class="text-sm font-medium text-blue-600">{{ post.category }}</span>
-            <div class="flex space-x-4 text-sm text-gray-500">
+            <span class="text-xs font-medium text-blue-600">{{ post.category }}</span>
+            <div class="flex space-x-4 text-xs text-gray-500">
               <span>{{ post.date }}</span>
               <span>{{ post.readTime }}</span>
             </div>
           </div>
-          <h1 class="text-3xl font-bold text-gray-900 mb-6">{{ post.title }}</h1>
-          <div class="prose prose-lg max-w-none" v-html="post.content.replace(/\n\n/g, '<br><br>').replace(/\`\`\`([\s\S]*?)\`\`\`/g, (_, code) => '<pre class=\'bg-gray-100 p-4 rounded-lg overflow-x-auto\'><code>' + code + '</code></pre>')">
+          <h1 class="text-2xl font-bold text-gray-900 mb-6">{{ post.title }}</h1>
+          <div class="prose prose-sm prose-blue max-w-none" v-html="post.content">
           </div>
         </div>
       </article>
