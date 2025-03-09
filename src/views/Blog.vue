@@ -5,6 +5,16 @@ import { posts } from '../content/blogData'
 
 const router = useRouter()
 const blogPosts = ref(posts)
+
+// 格式化日期的函数
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString)
+  return date.toLocaleDateString('zh-CN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })
+}
 </script>
 
 <template>
@@ -23,7 +33,7 @@ const blogPosts = ref(posts)
             <div class="flex items-center justify-between">
               <span class="text-sm font-medium text-blue-600">{{ post.category }}</span>
               <div class="flex space-x-4 text-sm text-gray-500">
-                <span>{{ post.date }}</span>
+                <span>{{ formatDate(post.date) }}</span>
                 <span>{{ post.readTime }}</span>
               </div>
             </div>
