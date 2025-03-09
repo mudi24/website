@@ -7,6 +7,16 @@ import MarkdownIt from 'markdown-it'
 const route = useRoute()
 const title = route.params.title as string
 
+// 添加日期格式化函数
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString)
+  return date.toLocaleDateString('zh-CN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })
+}
+
 interface Post {
   title: string
   content: string
@@ -62,9 +72,9 @@ onMounted(async () => {
       <article class="bg-white shadow-lg rounded-lg overflow-hidden">
         <div class="p-8">
           <div class="flex items-center justify-between mb-6">
-            <span class="text-xs font-medium text-blue-600">{{ post.category }}</span>
-            <div class="flex space-x-4 text-xs text-gray-500">
-              <span>{{ post.date }}</span>
+            <span class="text-sm font-medium text-blue-600">{{ post.category }}</span>
+            <div class="flex space-x-4 text-sm text-gray-500">
+              <span>{{ formatDate(post.date) }}</span>
               <span>{{ post.readTime }}</span>
             </div>
           </div>

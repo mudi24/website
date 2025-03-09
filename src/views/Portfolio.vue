@@ -6,19 +6,19 @@ const projects = ref([
     title: '项目一',
     description: '这是一个使用Vue3和TypeScript开发的现代化Web应用',
     imageUrl: 'https://via.placeholder.com/300x200',
-    tags: ['Vue3', 'TypeScript', 'Tailwind CSS']
+    tags: ['coze', '工作流']
   },
   {
-    title: '项目二',
-    description: '基于Node.js的后端API服务，提供高性能的数据处理能力',
-    imageUrl: 'https://via.placeholder.com/300x200',
-    tags: ['Node.js', 'Express', 'MongoDB']
+    title: 'Prompt实验室',
+    description: '这是一个基于React和Tailwind CSS开发的Prompt实验室项目，主要功能包括Prompt库浏览、实时测试和调试Prompt效果，支持多种AI模型接入。',
+    imageUrl: '/portfolio/prompt.png',
+    tags: ['React', 'Express', 'DeepSeek']
   },
   {
-    title: '项目三',
-    description: '响应式设计的企业官网，完美适配各种设备屏幕',
-    imageUrl: 'https://via.placeholder.com/300x200',
-    tags: ['React', 'Responsive Design', 'SCSS']
+    title: 'PyTorch 学习可视化',
+    description: '这是一个基于Vue 3和Element Plus的PyTorch学习平台，集成了ECharts图表库实现数据可视化。主要功能包括张量操作演示、自动微分可视化、神经网络结构展示、模型训练过程监控和迁移学习效果对比等。',
+    imageUrl: '/portfolio/pytorch.png',
+    tags: ['Vue', 'Pytorch', 'python']
   }
 ])
 </script>
