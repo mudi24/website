@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { posts } from '../content/blogData'
+// @ts-ignore
 import MarkdownIt from 'markdown-it'
 
 const route = useRoute()
@@ -49,7 +50,7 @@ onMounted(async () => {
     }
 
     // 加载markdown文件内容
-    const response = await fetch(`/src/content/blogs/${encodeURIComponent(title)}.md`)
+    const response = await fetch(`/blogs/${encodeURIComponent(title)}.md`)
     if (response.ok) {
       const text = await response.text()
       const [_, ...contentParts] = text.split('---\n').filter(Boolean)
