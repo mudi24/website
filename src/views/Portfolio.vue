@@ -3,10 +3,10 @@ import { ref } from 'vue'
 
 const projects = ref([
   {
-    title: '项目一',
-    description: '这是一个使用Vue3和TypeScript开发的现代化Web应用',
-    imageUrl: 'https://via.placeholder.com/300x200',
-    tags: ['coze', '工作流']
+    title: '营销海报以及标语',
+    description: '基于 Coze 构建的营销文案助手，能够根据产品特点和目标受众自动生成吸引力标语和海报文案。支持多种营销场景如节日促销、新品发布、品牌宣传等，并能根据不同平台（如微信、小红书、抖音）调整文案风格。集成了 A/B 测试功能，帮助优化文案效果。',
+    imageUrl: '/portfolio/marketing.png',
+    tags: ['Coze', '营销文案', '工作流']
   },
   {
     title: 'Prompt实验室',
