@@ -13,6 +13,9 @@ export default defineComponent({
     }
 
     const isActive = (path: string) => {
+      if (path === '/blog') {
+        return route.path === '/blog' || route.path.startsWith('/blog/')
+      }
       return route.path === path
     }
 

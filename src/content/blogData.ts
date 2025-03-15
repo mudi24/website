@@ -8,6 +8,14 @@ export interface Post {
 
 export const posts: Post[] = [
   {
+    "title": "大语言模型技术基础",
+    "description": "",
+    "date": "2025-02-07T00:00:00.000Z",
+    "readTime": "2 min read",
+    "category": "人工智能",
+    "images": []
+  },
+  {
     "title": "语言模型发展历程",
     "description": "",
     "date": "2025-02-03T00:00:00.000Z",
