@@ -8,6 +8,14 @@ export interface Post {
 
 export const posts: Post[] = [
   {
+    "title": "GPT和DeepSeek模型",
+    "description": "",
+    "date": "2025-02-08T00:00:00.000Z",
+    "readTime": "3 min read",
+    "category": "人工智能",
+    "images": []
+  },
+  {
     "title": "大语言模型技术基础",
     "description": "",
     "date": "2025-02-07T00:00:00.000Z",
